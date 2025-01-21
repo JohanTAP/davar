@@ -1,6 +1,7 @@
 "use client"
 
-import {
+import
+{
   Folder,
   Forward,
   MoreHorizontal,
@@ -8,14 +9,16 @@ import {
   type LucideIcon,
 } from "lucide-react"
 
-import {
+import
+{
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {
+import
+{
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
@@ -24,8 +27,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import Link from "next/link"
 
-export function NavProjects({
+export function NavProjects ( {
   projects,
 }: {
   projects: {
@@ -33,20 +37,21 @@ export function NavProjects({
     url: string
     icon: LucideIcon
   }[]
-}) {
+} )
+{
   const { isMobile } = useSidebar()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>Proyectos</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
-          <SidebarMenuItem key={item.name}>
+        { projects.map( ( item ) => (
+          <SidebarMenuItem key={ item.name }>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <Link href={ item.url }>
                 <item.icon />
-                <span>{item.name}</span>
-              </a>
+                <span>{ item.name }</span>
+              </Link>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -57,8 +62,8 @@ export function NavProjects({
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 className="w-48 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
+                side={ isMobile ? "bottom" : "right" }
+                align={ isMobile ? "end" : "start" }
               >
                 <DropdownMenuItem>
                   <Folder className="text-muted-foreground" />
@@ -76,7 +81,7 @@ export function NavProjects({
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
-        ))}
+        ) ) }
         <SidebarMenuItem>
           <SidebarMenuButton className="text-sidebar-foreground/70">
             <MoreHorizontal className="text-sidebar-foreground/70" />
